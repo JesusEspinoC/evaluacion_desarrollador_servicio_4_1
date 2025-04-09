@@ -71,10 +71,10 @@
 		public function Exportar($nombreArchivo){
 			try{
 
-				$objetoColor = new Objeto(); // Añadir creación de objeto "Objeto". Cambio de nombre a camelCase por convencion
+				$objeto = new Objeto(); // Añadir creación de objeto "Objeto". Cambio de nombre a camelCase por convencion. Cambio de nombre por irrelevancia de nombre previo
 				$validar = new Valida(); // Cambio de nombre a camelCase por convencion
 				$rutatemp = "temp/";
-				$valorObjeto = $objetoColor->ObtenerObjeto(); // Cambio de nombre a camelCase por convencion
+				$valorObjeto = $objeto->ObtenerObjeto(); // Cambio de nombre a camelCase por convencion
 
 				$nombreArchivo = $nombreArchivo . ".json";
 				file_put_contents($rutatemp . $nombreArchivo, json_encode($valorObjeto), FILE_APPEND | LOCK_EX);
