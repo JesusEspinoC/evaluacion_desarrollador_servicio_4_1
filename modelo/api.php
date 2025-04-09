@@ -49,12 +49,12 @@
 
 		public function MetodoGet(){			
 			// Mover lineas de objeto fuera de try para utilizarlas en catch y return
-			$bbjetoColor = new Objeto(); // Cambio de nombre a camelCase por convencion			
+			$objetoColor = new Objeto(); // Cambio de nombre a camelCase por convencion			
 			$validar = new Valida(); // Cambio de nombre a camelCase por convencion
 
 			try {
 				// Se reemplaza valor de array vacío con llamada a metodo ObtenerObjeto.
-				$Valor = $bbjetoColor->ObtenerObjeto();
+				$Valor = $objetoColor->ObtenerObjeto();
 				
 				$validar->CreaRespuesta("0", "", $Valor);
 				
