@@ -41,7 +41,7 @@
 						break;
 				}				
 			} catch (Exception $e) {
-				// Se añade respuesta en catch
+				// Se añade respuesta en catch. Se podría añadir mensaje de excetion, pero se omitira por seguridad.
 				$validar->CreaRespuesta("-1", "Ocurrio un error.");
 			}
 			return $validar->ObtenerResponse();		
