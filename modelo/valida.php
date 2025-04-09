@@ -25,6 +25,8 @@
 
 		public function ObtenerResponse(){
 			//Aqui se retorna la respuesta
+			// Se añade return con atributo "response" del objeto, con banderas para respuesta JSON
+			return json_encode($this->response, JSON_PRETTY_PRINT  | JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
 		}
 
 		public function ExportarJson($nombreArchivo){			

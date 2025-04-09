@@ -8,6 +8,7 @@
 	$metodo =  $_SERVER['REQUEST_METHOD'];
 
 	$api = new api($metodo);
-	$api->call();
+	// Se añade echo para mostrar la respuesta, y se mantienen solamente returns en clases
+	echo $api->call();
 
 ?>

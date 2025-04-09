@@ -14,6 +14,8 @@
 		}
 
 		public function call(){
+			// Se añade objeto "valida" para respuestas
+			$Validar = new valida();
 			try {
 				$tipo = "1";
 				if(isset($_GET['tipo'])){
@@ -25,35 +27,42 @@
 				switch ($this->metodo) {
 					case 'GET':
 						if($tipo == "1"){
-							$this->MetodoGet();
+							return $this->MetodoGet();
 						}else{
-							$this->exportar($nombre);
+							return $this->exportar($nombre);
 						}
 						break;			
-					default:					
+					default:
+						$Validar->CreaRespuesta("-1", "Error");					
 						break;
 				}				
 			} catch (Exception $e) {
-				
+				$Validar->CreaRespuesta("-1", "Error");
 			}				
 		}
 
 		public function MetodoGet(){			
+			// Mover lineas de objeto fuera de try para utilizarlas en catch y respuesta
+			$ObjetoColor = new objeto();				
+			$Validar = new valida();
 			try {
-				$ObjetoColor = new objeto();				
-				$Validar = new valida();
-				$Valor = [];
+				// Se reemplaza valor de array vacío con llamada a metodo ObtenerObjeto.
+				$Valor = $ObjetoColor->ObtenerObjeto();
 				
 				$Validar->CreaRespuesta("0", "", $Valor);
 				
-				echo json_encode($Validar->ObtenerResponse(), JSON_PRETTY_PRINT  | JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
+				// Se mueve esta linea a metodo ObtenerResponse de clase "valida"
+				// echo json_encode($Validar->ObtenerResponse(), JSON_PRETTY_PRINT  | JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
 			} catch (Exception $e) {
-				$Validar->CreaRespuesta("-1", "Error", []);
+				//Se elimina tercer parametro porque es null por default
+				$Validar->CreaRespuesta("-1", "Error");
 			}
-			$Response = $Validar->ObtenerResponse();
+			// Ajustar para que directamente se retorne la respuesta con metodo ObtenerResponse
+			return $Validar->ObtenerResponse();
 		}
 		public function exportar($nombreArchivo){
 			try{
+				$ObjetoColor = new objeto(); // Añadir creación de objeto "objeto"
 				$Validar = new valida();
 				$rutatemp = "temp/";
 				$ValorObjeto = $ObjetoColor->ObtenerObjeto();
@@ -83,7 +92,9 @@
 					die();
 				}
 			}catch(Exception $e) {
-				$Validar->CreaRespuesta("-1", "Error", []);
+				// Se elimina tercer parametro porque es null por default
+				$Validar->CreaRespuesta("-1", "Error");
+				return $Validar->ObtenerResponse();
 			}
 		}
 
