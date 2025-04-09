@@ -1,5 +1,5 @@
 <?php 
-	require_once('modelo/api.php');
+	require_once('modelo/Api.php');
 
 	header("HTTP/1.1 200");
 	header('Content-Type: application/json; charset=UTF-8');
@@ -7,8 +7,8 @@
 
 	$metodo =  $_SERVER['REQUEST_METHOD'];
 
-	$api = new api($metodo);
+	$api = new Api($metodo);
 	// Se añade echo para mostrar la respuesta, y se mantienen solamente returns en clases
-	echo $api->call();
+	echo $api->Call();
 
 ?>

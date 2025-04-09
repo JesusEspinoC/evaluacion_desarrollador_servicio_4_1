@@ -1,53 +1,48 @@
 <?php 
 	/**
-	 * 
+	 * Clase Objeto
 	 */
-	class objeto
+	// Cambio de nombre a PascalCase por convencion
+	class Objeto
 	{		
 		function __construct()
 		{			
 		}
 
 		function ObtenerObjeto(){	
-			$Respuesta = [];
-			$Objeto = [
-					"tipo" => "carro",
+			// Se simplifica creacion y retorno de arreglo de datos
+			return [
+				[
+					"tipo" => "carro", 
 					"tamanio" => "Grande",
 					"color" => "Green"
-					  ];
-			array_push($Respuesta, $Objeto);
-			$Objeto = [
-					"tipo" => "moto",
+				],
+				[
+					"tipo" => "moto", 
 					"tamanio" => "mediana",
 					"color" => "Blue"
-					  ];
-			array_push($Respuesta, $Objeto);
-			$Objeto = [
-					"tipo" => "bicicleta",
+				],
+				[
+					"tipo" => "bicicleta", 
 					"tamanio" => "chica",
 					"color" => "Green"
-					  ];
-			array_push($Respuesta, $Objeto);
-			$Objeto = [
-					"tipo" => "avion",
+				],
+				[
+					"tipo" => "avion", 
 					"tamanio" => "grande",
 					"color" => "yellow"
-					  ];
-			array_push($Respuesta, $Objeto);
-			$Objeto = [
-					"tipo" => "lancha",
+				],
+				[
+					"tipo" => "lancha", 
 					"tamanio" => "grande",
 					"color" => "Red"
-					  ];
-			array_push($Respuesta, $Objeto);
-			$Objeto = [
-					"tipo" => "moto",
+				],
+				[
+					"tipo" => "moto", 
 					"tamanio" => "mediano",
 					"color" => "Red"
-					  ];
-			array_push($Respuesta, $Objeto);
-
-			return $Respuesta;
+				]
+			];
 		}
 
 		

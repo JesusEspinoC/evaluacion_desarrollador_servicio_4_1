@@ -1,23 +1,30 @@
 <?php  
 	/**
-	 * 
+	 * Clase Valida
 	 */
-	class valida
+	// Cambio de nombre a PascalCase por convencion
+	class Valida
 	{
 		private $response = array();
 		private $rutatemp = "temp/";
 		public function __construct()
 		{			
 		}
-		public function CreaRespuesta($codigo, $mensaje = "", $objeto = null){
+		// Se añade $objetoNombre para hacer mas versatil la informacion devuelta en caso exitoso. Alternativamente se puede crear un case para cada "tipo" de consulta GET. Pero esto es mas resumido.
+		public function CreaRespuesta($codigo, $mensaje = "", $objeto = null, $objetoNombre = "listaobjetos"){
 			switch ($codigo) {
 				case '0':
 					$this->response["codigo_respuesta"] = 0;
 					$this->response["mensaje"] = "Ok";
-					$this->response["listaobjetos"] = $objeto;
+					// Añadir if para omitir en caso de que objeto sea null
+					if(isset($objeto)){
+						$this->response[$objetoNombre] = $objeto;
+					}
 					break;				
-				case '-1':
-					$this->response["codigo_respuesta"] = -1;
+					// Añadir case para caso tipo != 1 en clase Api.php, que utiliza la funcion exportar de la misma clase			
+
+				default: // Reemplazar case para que sea más versatil al enviar codigos de error.
+					$this->response["codigo_respuesta"] = $codigo;
 					$this->response["mensaje"] = $mensaje;
 					break;
 			}
